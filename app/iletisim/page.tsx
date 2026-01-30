@@ -59,7 +59,7 @@ export default function IletisimPage() {
 
       <Form {...form}>
         <form action={formAction} className="space-y-6">
-          <input type="hidden" name="website" {...form.register("website")} />
+          <input type="hidden" {...form.register("website")} />
 
           <FormField
             control={form.control}

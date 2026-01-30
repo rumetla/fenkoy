@@ -11,7 +11,17 @@ import {
   FormProvider,
   useFormContext,
 } from "react-hook-form";
+import type { FieldError } from "react-hook-form";
 import { cn } from "@/lib/utils";
+
+type UseFormFieldReturn = {
+  id: string;
+  name: string;
+  formItemId: string;
+  formDescriptionId: string;
+  formMessageId: string;
+  error?: FieldError;
+};
 
 const Form = FormProvider;
 
@@ -37,7 +47,7 @@ const FormField = <
   );
 };
 
-const useFormField = () => {
+const useFormField = (): UseFormFieldReturn => {
   const fieldContext = React.useContext(FormFieldContext);
   const itemContext = React.useContext(FormItemContext);
   const { getFieldState, formState } = useFormContext();
@@ -45,7 +55,14 @@ const useFormField = () => {
   const fieldState = getFieldState(fieldContext.name, formState);
 
   if (!fieldContext.name) {
-    return { id: "1", name: "", formItemId: "", formDescriptionId: "", formMessageId: "" };
+    return {
+      id: "1",
+      name: "",
+      formItemId: "",
+      formDescriptionId: "",
+      formMessageId: "",
+      error: undefined,
+    };
   }
 
   return {
