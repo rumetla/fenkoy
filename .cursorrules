@@ -1,0 +1,194 @@
+You are a senior frontend engineer building a production-ready MVP.
+
+
+
+Build a Next.js (App Router) web application based strictly on the following constraints and requirements:
+
+
+
+GENERAL RULES:
+
+\- Use Next.js App Router
+
+\- Do NOT create a separate backend or microservices
+
+\- Do NOT use a database
+
+\- Use Server Actions for form submissions
+
+\- Store form submissions in Google Sheets using Google Sheets API
+
+\- Workshop data must be hardcoded in the codebase (constants/config files)
+
+\- Use Tailwind CSS
+
+\- Do NOT over-engineer
+
+\- This is an MVP landing + lead collection website
+
+
+
+COMPONENT SOURCING RULES (CRITICAL):
+
+\- \*\*DO NOT\*\* assume a pre-existing folder of components exists.
+
+\- \*\*shadcn/ui:\*\* Use for foundational UI elements (Button, Input, Card, Form, Label, Textarea).
+
+&nbsp; - You must advise on the CLI commands to install them (e.g., `npx shadcn@latest add button`).
+
+\- \*\*ReactBits:\*\* Use for creative/interactive elements (Hero Animations, Carousel).
+
+&nbsp; - You must generate these components files manually (e.g., `components/ui/FallingText.jsx`) by referencing the \*\*ReactBits documentation\*\* context (@ReactBits).
+
+&nbsp; - Do not hallucinate imports; create the file content based on the docs.
+
+
+
+DESIGN GUIDELINES:
+
+\- Style should feel like a professional education platform
+
+\- Target audience: parents of middle school students
+
+\- Clean, trustworthy, modern
+
+\- Not childish, not overly academic
+
+\- Clear call-to-actions
+
+
+
+PAGES TO BUILD:
+
+
+
+1\. Home Page (/)
+
+\- Hero section: Use a \*\*ReactBits\*\* animation component (e.g., Split Text or specialized Carousel).
+
+&nbsp; - Autoplay enabled
+
+&nbsp; - Dot navigation visible and clickable
+
+\- Mission / Vision section: Use \*\*shadcn/ui\*\* Card or a grid layout.
+
+\- Workshop list: Use \*\*shadcn/ui\*\* Cards.
+
+&nbsp; - Data comes from a hardcoded workshops config
+
+&nbsp; - Each workshop shows:
+
+&nbsp; - Period name
+
+&nbsp; - Date range
+
+&nbsp; - Short description
+
+&nbsp; - "Reserve Now" button (shadcn Button) linking to /rezervasyon
+
+\- Strong CTA section linking to /iletisim
+
+
+
+2\. Contact Page (/iletisim)
+
+\- Simple contact form using \*\*shadcn/ui\*\* Form components:
+
+&nbsp; - Name (Input)
+
+&nbsp; - Phone (Input)
+
+&nbsp; - Email (Input)
+
+&nbsp; - Message (Textarea)
+
+\- On submit:
+
+&nbsp; - Use a Server Action
+
+&nbsp; - Append a row to a Google Sheet
+
+&nbsp; - Send a notification email to admin
+
+&nbsp; - Show success message (use shadcn/ui Toast or Alert)
+
+
+
+3\. Reservation Page (/rezervasyon)
+
+\- Display available workshop periods and dates
+
+\- Reservation form (survey-style) using \*\*shadcn/ui\*\*:
+
+&nbsp; - Student age
+
+&nbsp; - Student grade
+
+&nbsp; - Parent name
+
+&nbsp; - Phone
+
+&nbsp; - Email
+
+&nbsp; - Interest areas (shadcn Checkbox)
+
+&nbsp; - Optional notes
+
+\- Each workshop date maps to a DIFFERENT Google Sheet
+
+\- On submit:
+
+&nbsp; - Determine correct Sheet ID from selected workshop
+
+&nbsp; - Append row using Server Action
+
+&nbsp; - Send admin email
+
+
+
+SECURITY:
+
+\- Basic client-side validation (Zod + React Hook Form standard in shadcn)
+
+\- Server-side validation
+
+\- Honeypot field
+
+\- Basic rate limiting
+
+
+
+ARCHITECTURE:
+
+\- Keep folder structure clean and simple
+
+\- `components/ui` -> for shadcn and ReactBits components
+
+\- `lib` -> for utils and google sheets logic
+
+\- `app` -> for routes
+
+\- Use constants for workshop data and sheet ID mapping
+
+\- Use environment variables for Google credentials
+
+
+ENVIRONMENT & TERMINAL:
+- User OS: Windows 11 (WSL2 - Ubuntu/Debian)
+- Terminal Shell: Bash / Zsh
+- CLI Syntax: Always use Linux commands (e.g., `ls`, `rm -rf`, `export`), NEVER use PowerShell or cmd.exe commands (e.g., `dir`, `del`, `set`).
+- Package Manager: pnpm (run within WSL)
+
+
+OUTPUT EXPECTATION:
+
+\- Clean, readable, maintainable code
+
+\- No unnecessary abstractions
+
+\- Explain briefly what you are doing when needed, but focus on code
+
+
+
+Start by proposing the folder structure, then implement page by page.
+
